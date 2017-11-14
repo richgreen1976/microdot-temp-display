@@ -17,8 +17,23 @@ def main():
         conn = urllib2.urlopen("https://api.thingspeak.com/channels/%s/feeds/last.json?api_key=%s" \
                                % (CHANNEL_ID,READ_API_KEY))
         response = conn.read()
+        set_decimal(0, 1)
+        set_decimal(1, 1)
+        set_decimal(2, 1)
+        set_decimal(3, 1)
+        set_decimal(4, 1)
+        set_decimal(5, 1)
+        show()
         print "http status code=%s" % (conn.getcode())
         
+    set_decimal(0, 0)
+    set_decimal(1, 0)
+    set_decimal(2, 0)
+    set_decimal(3, 0)
+    set_decimal(4, 0)
+    set_decimal(5, 0)
+    show()
+    
     data=json.loads(response)
     print data['field1'],data['field2'],data['field3'],data['created_at']
     outtemp = data['field1']
